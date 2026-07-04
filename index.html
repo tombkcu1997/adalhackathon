@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticket Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>🎫 Ticket Dashboard</h1>
+      <p>Create tasks, track deadlines, and get reminder notifications.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Create Ticket</h2>
+      <form id="ticket-form" class="ticket-form">
+        <label>
+          Title
+          <input type="text" id="title" name="title" placeholder="Fix login flow" required />
+        </label>
+
+        <label>
+          Description
+          <textarea id="description" name="description" rows="3" placeholder="What needs to be done?"></textarea>
+        </label>
+
+        <div class="form-row">
+          <label>
+            Due Date & Time
+            <input type="datetime-local" id="dueAt" name="dueAt" required />
+          </label>
+
+          <label>
+            Remind Before (minutes)
+            <input type="number" id="remindBeforeMins" name="remindBeforeMins" min="0" step="1" value="10" required />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Add Ticket</button>
+          <button type="button" id="enable-notifications" class="secondary">Enable Notifications</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Open Tickets</h2>
+      <ul id="ticket-list" class="ticket-list"></ul>
+      <p id="empty-state" class="empty-state">No tickets yet. Add one above ✨</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
