@@ -1,26 +1,57 @@
-# Ticket Dashboard (Simple Starter)
+# Ticket Dashboard (AI Smart Scheduler)
 
-A lightweight browser app for task tickets with reminder notifications.
+A lightweight ticket dashboard where you can paste natural-language tasks and let AI suggest deadlines, priority, and reminders.
 
 ## Features
-- Create tickets with:
-  - title
-  - description
-  - due date/time
-  - reminder lead time (minutes)
-- Dashboard list of open tickets (sorted by due date)
-- Mark ticket as done
-- Delete ticket
+- Manual ticket creation (title, description, due date, reminder, priority)
+- AI Smart Planner:
+  - Paste a messy task list
+  - Click **Suggest Schedule with AI**
+  - Get tickets with suggested due dates, priority, and reminders
+- Priority badges (high / medium / low)
+- Open-ticket dashboard sorted by due date
+- Mark done / delete
+- Browser reminder notifications (with alert fallback)
 - Local persistence with `localStorage`
-- Browser notification reminder (or alert fallback)
 
-## Run
-Because this app has no backend/dependencies, you can run it by opening `index.html` in a browser.
+## Project Structure
+- `index.html` — app UI
+- `styles.css` — dashboard styles
+- `app.js` — frontend logic
+- `api/schedule.js` — serverless API route for LLM scheduling
+- `.env.example` — environment variable template
 
-For best notification behavior:
-1. Click **Enable Notifications**
-2. Allow browser notification permission
+## Run Locally
+Because AI scheduling needs a backend endpoint, use a local dev server that supports API routes (recommended: Vercel CLI).
+
+1. Install Vercel CLI:
+   ```bash
+   npm i -g vercel
+   ```
+
+2. In this folder, set env vars (PowerShell example):
+   ```powershell
+   $env:OPENAI_API_KEY="your_key_here"
+   $env:OPENAI_MODEL="gpt-4o-mini"
+   ```
+
+3. Start local dev:
+   ```bash
+   vercel dev
+   ```
+
+4. Open the local URL shown by Vercel CLI.
+
+## Deploy to Vercel (Recommended)
+1. Push this project to GitHub.
+2. In Vercel: **Add New Project** → import your GitHub repo.
+3. In Vercel project settings, add environment variables:
+   - `OPENAI_API_KEY` (required)
+   - `OPENAI_MODEL` (optional, default: `gpt-4o-mini`)
+4. Deploy.
+
+After deploy, your frontend calls `/api/schedule` automatically.
 
 ## Notes
-- Reminders are scheduled in-browser and work while the page is open.
-- Data is stored in your browser local storage on this machine.
+- API key stays server-side (never exposed in browser JS).
+- If the AI returns malformed data, the app uses safe defaults for due date/priority/reminders.

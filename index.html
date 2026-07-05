@@ -10,8 +10,20 @@
   <main class="container">
     <header class="header">
       <h1>🎫 Ticket Dashboard</h1>
-      <p>Create tasks, track deadlines, and get reminder notifications.</p>
+      <p>Tell the app what you need to do, and let AI suggest scheduling.</p>
     </header>
+
+    <section class="panel">
+      <h2>AI Smart Planner</h2>
+      <label>
+        Tell me what you need to do
+        <textarea id="quick-input" rows="4" placeholder="Example: Finish landing page draft by Monday, send client update by tomorrow 3pm, and prep demo by Friday morning."></textarea>
+      </label>
+      <div class="actions">
+        <button type="button" id="suggest-schedule">Suggest Schedule with AI</button>
+      </div>
+      <p class="meta helper-text">This will create draft tickets with AI-suggested due dates, priority, and reminder timing.</p>
+    </section>
 
     <section class="panel">
       <h2>Create Ticket</h2>
@@ -35,6 +47,17 @@
           <label>
             Remind Before (minutes)
             <input type="number" id="remindBeforeMins" name="remindBeforeMins" min="0" step="1" value="10" required />
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            Priority
+            <select id="priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
           </label>
         </div>
 

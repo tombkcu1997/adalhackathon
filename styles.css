@@ -110,14 +110,49 @@ button.secondary {
 }
 
 .ticket-card h3 {
-  margin: 0 0 0.4rem;
+  margin: 0;
   font-size: 1.05rem;
+}
+
+.ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.priority-badge {
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.priority-high {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+.priority-medium {
+  background: #78350f;
+  color: #fde68a;
+}
+
+.priority-low {
+  background: #14532d;
+  color: #bbf7d0;
 }
 
 .meta {
   color: var(--muted);
   margin: 0.2rem 0;
   font-size: 0.9rem;
+}
+
+.helper-text {
+  margin-top: 0.7rem;
 }
 
 .ticket-actions {
